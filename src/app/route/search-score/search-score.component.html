@@ -1,0 +1,7 @@
+<div class="route-container">
+  <search-form-score
+    (searchSubmit)="onSearchSubmit($event)"
+    (resetForm)="onResetForm()"
+  />
+  <table-score [gridData]="gridData" (refreshGrid)="reloadData()"/>
+</div>

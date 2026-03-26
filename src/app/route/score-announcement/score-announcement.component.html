@@ -1,0 +1,13 @@
+<div class="route-container">
+  <search-form-score-announcemen
+    #scoreHeader
+    (searchSubmit)="onSearchSubmit($event)"
+    (resetForm)="onReset()"
+    (currentSubject)="onCurrentSubjectHandle($event)"
+  />
+  <table-score-announcemen
+    [gridData]="gridData"
+    [currentSubject]="currentSubjectData"
+    (emailStatusChanged)="handleEmailStatus($event)"
+  />
+</div>

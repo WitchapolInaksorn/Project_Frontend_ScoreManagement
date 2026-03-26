@@ -1,0 +1,149 @@
+/* ถ้าเกิดปัญหาลบได้ตั้งแต่แถวนี้ */
+@font-face {
+  font-family: "Prompt";
+  src: url("assets/fonts/Prompt/Prompt-Regular.ttf") format("ttf"),
+    url("assets/fonts/Prompt/Prompt-Regular.ttf") format("ttf");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Prompt";
+  src: url("assets/fonts/Prompt/Prompt-Bold.ttf") format("ttf"),
+    url("assets/fonts/Prompt/Prompt-Bold.ttf") format("ttf");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Prompt";
+  src: url("assets/fonts/Prompt/Prompt-Italic.ttf") format("ttf"),
+    url("assets/fonts/Prompt/Prompt-Italic.ttf") format("ttf");
+  font-weight: 400;
+  font-style: italic;
+}
+
+/* You can add global styles to this file, and also import other style files */
+
+:root {
+  --primary-color: #3d8bfd;
+  --secondary-color: #9d9fa1;
+  --green-color: #03a96b;
+  --active-color: #07bc77;
+  --grey-color: #2f3337;
+  --white-color: #ffffff;
+  --body-color: #eef5ff;
+  --disabled-color: #e9ecef;
+  --danger-color: #d33;
+  --font-size: 1rem;
+  --font-color: #3c3c3c;
+  --font-menu-color: #9d9fa1;
+  --icon-size: 1.25rem;
+  --dark-color: #222;
+}
+
+/* layout */
+body,
+html {
+  font-family: "Prompt", sans-serif !important;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.burger-icon {
+  font-size: 1.5rem; /* ขนาดไอคอน */
+  cursor: pointer; /* เปลี่ยน cursor เมื่อ hover */
+  color: var(--white-color);
+}
+
+/* utility */
+.dropdown-item:not(.disabled).active,
+.dropdown-item:not(.disabled):active {
+  background-color: var(--active-color);
+  color: var(--white-color);
+}
+
+/* route layout */
+.route-container {
+  display: flex;
+  flex-direction: column; /* จัดเรียงในแนวตั้ง */
+  gap: 0.6rem; /* เว้นระยะห่างระหว่าง items ในแนวตั้ง */
+}
+
+/* ng-select */
+.ng-select.ng-select-disabled > .ng-select-container {
+  background-color: var(--disabled-color) !important;
+  opacity: 1;
+}
+.ng-select.ng-select-multiple.ng-select-disabled
+  > .ng-select-container
+  .ng-value-container
+  .ng-value {
+  background-color: var(--disabled-color) !important;
+  border: 1px solid var(--disabled-color) !important;
+}
+
+/* swal2 */
+.swal2-title {
+  font-size: 1.375rem; /* Adjust font size as needed */
+}
+
+/* label-truncate */
+.label-truncate {
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Remove auto-fill and clear buttons in inputs */
+input::-ms-reveal,
+input::-ms-clear,
+input::-webkit-credentials-auto-fill-button,
+input::-webkit-contacts-auto-fill-button {
+  display: none;
+}
+
+/* swal2 animation */
+.animate__headShake {
+  animation-iteration-count: infinite !important; /* ทำให้แอนิเมชั่นวนไปเรื่อยๆ */
+}
+
+.no-border {
+  border: 0 !important;
+}
+
+.ng-select.ng-select-single .ng-select-container {
+  height: 38px !important; /* ปรับความสูงของ ng-select ให้สูงเท่า tag input */
+}
+
+input.form-control[readonly] {
+  background-color: var(--bs-secondary-bg);
+  opacity: 1;
+  cursor: default;
+}
+
+/* กำหนด with auto ขยายตามเนื้อหา dropdown ของ subject ใน Dashboard */
+#subject_id .ng-dropdown-panel {
+  width: auto !important;
+  min-width: 100% !important;
+}
+
+/* form display red border in input and ng-select */
+.form-control.ng-invalid.ng-touched {
+  border: 1px solid var(--bs-form-invalid-border-color) !important;
+  border-radius: 0.25rem;
+}
+.form-control:focus.ng-invalid.ng-touched {
+  box-shadow: 0 0 0 0.25rem rgba(var(--bs-danger-rgb), 0.25);
+}
+
+/* สำหรับ ng-select */
+.ng-select.ng-invalid.ng-touched > .ng-select-container {
+  border: 1px solid var(--bs-form-invalid-border-color) !important;
+  border-radius: 0.25rem;
+}
+.ng-select.ng-select-focused.ng-invalid.ng-touched > .ng-select-container {
+  box-shadow: 0 0 0 0.25rem rgba(var(--bs-danger-rgb), 0.25);
+}
