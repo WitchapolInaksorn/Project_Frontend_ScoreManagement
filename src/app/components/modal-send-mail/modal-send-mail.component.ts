@@ -34,24 +34,26 @@ const $: any = window['$'];
   styleUrl: './modal-send-mail.component.css',
 })
 export class ModalSendMailComponent implements OnInit, OnChanges {
-  @Output() emailStatusChanged = new EventEmitter<boolean>(); // EventEmitter สำหรับส่งค่ากลับไปยัง parent component
+  @Output() emailStatusChanged = new EventEmitter<boolean>(); 
 
-  messageText: string = ''; // ข้อความใน textarea
-  emailSubject: string = ''; // ข้อความใน input subject
-  selectedVariable: any = null; // ตัวแปรที่เลือกจาก select กำหนดเป็น null เพื่อแสดง placeholder
-  canAddVariable: boolean = false; // ควบคุมการ enabled ปุ่ม
-  focusedField: 'textarea' | 'subject' | null = null; // ฟิลด์ที่กำลัง focus อยู่
-  language: string = 'th'; // ค่าภาษาเริ่มต้น
+  messageText: string = ''; 
+  emailSubject: string = '';
+  selectedVariable: any = null; 
+  canAddVariable: boolean = false; 
+  focusedField: 'textarea' | 'subject' | null = null; 
+  language: string = 'th'; 
   templateName: string = '';
   currentEmail: string = '';
   currentDefaultTemplate: any = null;
   currentSubject: {
     subject_id: string;
+    subject_name: string;
     academic_year: number;
     semester: number;
     section: number;
   } = {
     subject_id: '',
+    subject_name: '',
     academic_year: 0,
     semester: 0,
     section: 0,
@@ -1032,17 +1034,17 @@ export class ModalSendMailComponent implements OnInit, OnChanges {
   }
 
   //update subject from search
-  updateCurrentSubject(subjectData: {
-    subject_id: string;
-    academic_year: number;
-    semester: number;
-    section: number;
-  }) {
-    console.log('onUpdateCurrentSubject:subjectData => ', subjectData);
-    this.currentSubject = subjectData;
-    console.log(
-      'onUpdateCurrentSubject:currentSubject => ',
-      this.currentSubject
-    );
-  }
+updateCurrentSubject(subjectData: any): void {
+  console.log('onUpdateCurrentSubject:subjectData => ', subjectData);
+
+  this.currentSubject = {
+    subject_id: subjectData.subject_id,
+    subject_name: subjectData.subject_name || subjectData.subjectName || '', 
+    academic_year: subjectData.academic_year,
+    semester: subjectData.semester,
+    section: subjectData.section,
+  };
+
+  console.log('onUpdateCurrentSubject:currentSubject => ', this.currentSubject);
+}
 }
